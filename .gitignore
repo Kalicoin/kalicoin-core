@@ -1,0 +1,34 @@
+src/*.exe
+src/kalicoin
+src/kalicoind
+src/test_kalicoin
+.*.swp
+*.*~*
+*.bak
+*.rej
+*.orig
+*.o
+*.patch
+.kalicoin
+
+# Compilation and Qt preprocessor part
+*.qm
+Makefile
+kalicoin-qt
+Kalicoin-Qt.app
+
+# Unit-tests
+Makefile.test
+kalicoin-qt_test
+
+# Resources cpp
+qrc_*.cpp
+
+# Qt creator
+*.pro.user
+
+# Mac specific
+.DS_Store
+build
+
+!src/leveldb*/Makefile
