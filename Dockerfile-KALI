@@ -1,0 +1,14 @@
+FROM ubuntu:16.04
+
+RUN add-apt-repository ppa:bitcoin/bitcoin
+RUN apt-get update && apt-get install -y build-essential libssl-dev libboost-all-dev libdb4.8-dev libdb4.8++-dev libminiupnpc-dev git unzip wget
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+#build from latest refactor12 branch code
+RUN git clone https://github.com/Kalicoin/kalicoin-core.git && cd kalicoin-core/src/ && make -f makefile.unix
+
+RUN mkdir /root/.kalicoin/
+RUN echo "rpcuser=kalicoinrpc" >> /root/.kalicoin/kalicoin.conf
+RUN echo "rpcpassword=kalicoinrpcpassword" >> /root/.kalicoin/kalicoin.conf
+
+CMD ["/kalicoin-core/src/kalicoind","-daemon","-listen","-upnp"]
