@@ -1090,8 +1090,8 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
         nSubsidy = 50000000 * COIN;
     }
 
-    // Subsidy is cut in half every 840000 blocks, which will occur approximately every 4 years
-    nSubsidy >>= (nHeight / 2000000); // Kalicoin: 840k blocks in ~4 years
+    // Subsidy is cut in half every 2 million blocks, which brings total supply 2000000*50*2 = 200 million.
+    nSubsidy >>= (nHeight / 2000000); // 
 
     return nSubsidy + nFees;
 }
